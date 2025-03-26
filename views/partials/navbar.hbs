@@ -7,13 +7,31 @@
       </div>
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2">Products</a></li>
-        <li><a href="#" class="nav-link px-2">Add</a></li>
+        {{#if isProducts}}
+            <li><a href="products" class="nav-link px-2 text-decoration-underline">Products</a></li>
+        {{else}}
+            <li><a href="products" class="nav-link px-2">Products</a></li>
+        {{/if}}
+
+        {{#if isAdd}}
+            <li><a href="add" class="nav-link px-2 text-decoration-underline">Add</a></li>
+        {{else}}
+            <li><a href="add" class="nav-link px-2">Add</a></li>
+        {{/if}}
       </ul>
 
       <div class="col-md-3 text-end">
-        <button type="button" class="btn btn-primary me-2">Login</button>
-        <button type="button" class="btn btn-primary">Sign-up</button>
+        {{#if isLogin}}
+            <a class="text-decoration-none text-light" href="login"><button type="button" class="btn btn-primary active">Login</button></a>
+        {{else}}
+            <a class="text-decoration-none text-light" href="login"><button type="button" class="btn btn-primary">Login</button></a>
+        {{/if}}
+
+        {{#if isSignUp}}
+            <a class="text-decoration-none text-light" href="sign-up"><button type="button" class="btn btn-success active">Sign-up</button></a>
+        {{else}}
+            <a class="text-decoration-none text-light" href="sign-up"><button type="button" class="btn btn-success">Sign-up</button></a>
+        {{/if}}
       </div>
     </header>
   </div>
