@@ -15,4 +15,14 @@ router.get("/sign-up", (req, res) => {
     });
 });
 
+router.post('/login', (req, res) => {
+    console.log(req.body);
+    res.redirect("/");
+});
+
+router.post("/sign-up", (req, res) => {
+    console.log(req.body);
+    res.redirect("/");
+});
+
 export default router;
