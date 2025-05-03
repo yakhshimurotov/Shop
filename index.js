@@ -1,7 +1,10 @@
 import express from "express";
 import {create} from "express-handlebars";
-import ProductsRouter from "./routse/products.js";
-import AouthsRouter from "./routse/auths.js";
+import ProductsRouter from "./routes/products.js";
+import AouthsRouter from "./routes/auths.js";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 const app = express();
 
 const hbs = create({
@@ -18,7 +21,23 @@ app.use(ProductsRouter);
 app.use(AouthsRouter);
 app.use(express.static("public"));
 
-const PORT = process.env.PORT || 2000;
-app.listen(PORT, () => {
-    console.log(`Server is running...${PORT}`);
-});
+const appStart = () => {
+    try {
+        const PORT = process.env.PORT || 2000;
+        app.listen(PORT, () => {
+            console.log(`Server is running...${PORT}`);
+        });
+
+        mongoose.connect(process.env.MONGO_URL,)
+        .then(() => {
+            console.log("MongoDB connected...");
+        }).catch((error) => {
+            console.error("MongoDB connection error:", error);
+        })
+    } catch (error) {
+        console.error("Xatolik yuz berdi", error);
+        throw error;
+    }
+};
+
+appStart();
