@@ -1,7 +1,7 @@
 import {Schema, model} from "mongoose";
 
 const UserSchema = new Schema({
-    fistName:{type: String, requider: true},
+    firstName:{type: String, requider: true},
     lastName:{type: String, requider: true},
     email:{type: String, requider: true, unique: true},
     password:{type: String, requider: true},

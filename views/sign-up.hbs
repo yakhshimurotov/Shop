@@ -3,10 +3,10 @@
       <h2 class="mb-3">Sign-up</h2>
         <div class="row mb-3">
           <div class="col">
-            <input name="firstname" type="text" class="form-control" placeholder="First name" aria-label="First name">
+            <input name="firstName" type="text" class="form-control" placeholder="First name" aria-label="First name">
           </div>
           <div class="col">
-            <input name="lastname" type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+            <input name="lastName" type="text" class="form-control" placeholder="Last name" aria-label="Last name">
           </div>
         </div>    
 
@@ -19,5 +19,8 @@
           <label for="floatingPassword">Password</label>
         </div>
         <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        {{#if Signup}}
+        <p class="error">{{Signup}}</p>
+        {{/if}}
     </form>
 </div>

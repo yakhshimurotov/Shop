@@ -3,7 +3,9 @@ import {create} from "express-handlebars";
 import ProductsRouter from "./routes/products.js";
 import AouthsRouter from "./routes/auths.js";
 import mongoose from "mongoose";
+import flash from "connect-flash";
 import dotenv from "dotenv";
+import session from "express-session";
 dotenv.config();
 const app = express();
 
@@ -16,6 +18,13 @@ app.engine("hbs", hbs.engine);
 app.set("view engine", "hbs");
 app.set("views", "./views");
 
+app.use(flash());
+app.use(session({
+    secret: 'shop_fiy', // O'zingizga xos kuchli maxfiy so'z
+    resave: false,
+    saveUninitialized: false
+  }));
+  
 app.use(express.urlencoded({extended: true}))
 app.use(ProductsRouter);
 app.use(AouthsRouter);
